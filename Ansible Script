@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Generate a random number
+      vars:
+        random_number: "{{ 1 + (ansible_date_time.epoch | int) % 100 }}"
+      debug:
+        msg: "Random number: {{ random_number }}"
