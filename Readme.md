@@ -1,5 +1,5 @@
 # m239-Minecraft-Server_Ansible
-How to Set UP a Minecraft Server with Ansible under Ubuntu 22.04 with a Systemdeamon on ine server
+How to Set UP a Minecraft Server (1.19.4) with Ansible under Ubuntu 22.04 with a Systemdeamon on ine server
 
 Voraussetzungen: 
 Funktionierendes Netzwerk (Bridged bei VM)
@@ -43,7 +43,7 @@ Mit "y" bestätigen und immer weiter klicken
 
 Schritt 8: Ansible Host File anpassen
 sudo nano /etc/ansible/hosts
-zu unters die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
+Zu unters die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
 
 Schritt 9:  Testen, sind die Hosts vorhanden und erreichbar?
 ansible-inventory --list -y 
@@ -70,11 +70,31 @@ cd templates/
 
 Schritt 14: Systemdeamon erstellen (File)
 sudo nano minecraft.service.j2
-Hier den Inhalt des Minecraft.service.j2 File einfügen.
+Hier den Inhalt des Minecraft.service.j2 File einfügen und speichern.
 
-Schritt 15: 
+Schritt 15: Ansible Playbook einmalig starten
+cd ..
+ansible-playbook minecraft.yaml
+Dies kann einen kurzen moment dauern.
 
+Schritt 16: EULA vom Minecraftserver akzeptieren
+cd /opt/minecraft_server
+sudo nano eula.txt
+Den Wert false durch true ersetzen und speichern.
 
+Schritt 17: Optional anpassungen an den Minecraft Rules
+cd /opt/minecraft_server
+sudo nano server.properties
 
+Schritt 18: Ansible Playbook starten
+ansible-playbook /ansible/minecraft.yaml
 
+Schritt 19: Auf den Server vom Minecraft Launcher verbinden via IP
+Also im Minecraft Launcher version 1.19.4 --> Multiplayer --> Direct Connection -->server ip (172.20.10.2)
+
+Schitt 20: Fehlerbehebung
+Falls der Minecraftserver nicht direkt läuft den status anschauen
+systemctl status minecraft.service
+Dieser Service muss eventuell neugestartet werden
+systemctl restart minecraft.service 
 
