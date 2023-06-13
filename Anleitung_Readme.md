@@ -92,9 +92,9 @@ ansible-playbook /ansible/minecraft.yaml
 Schritt 19: Auf den Server vom Minecraft Launcher verbinden via IP
 Also im Minecraft Launcher version 1.19.4 --> Multiplayer --> Direct Connection -->server ip (172.20.10.2)
 
-Schitt 20: Fehlerbehebung
-Falls der Minecraftserver nicht direkt läuft den status anschauen
+Fehlerbehebung:
+Falls der Minecraftserver nicht direkt läuft muss man den status anschauen falls nicht grün neustarten
 systemctl status minecraft.service
-Dieser Service muss eventuell neugestartet werden
+Befehl zum den Service Neustarten
 systemctl restart minecraft.service 
 
