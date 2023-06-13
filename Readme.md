@@ -33,5 +33,19 @@ Schritt 6: SSH-Verbindung von Root auf den Localhost
 ssh root@localhost
 Sollte funktionieren ansonsten rebooten und erneut versuchen.
 
-Schritt 7: 
+Schritt 7: Ansible Repository erstellen und installieren
+ctrl+d klicken
+sudo apt-add-repository ppa:ansible/ansible
+Immer auf Enter klicken
+sudo apt update
+sudo apt install ansible
+Mit "y" bestätigen und immer weiter klicken
+
+Schritt 8: Ansible Host File anpassen
+sudo nano /etc/ansible/hosts
+zuunters die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
+
+Schritt 9:  Testen funktionirt alles?
+
+
 
