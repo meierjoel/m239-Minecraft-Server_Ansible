@@ -64,7 +64,15 @@ Schritt 12: Ansible Minecraft Playbook erstellen
 sudo nano minecraft.yaml
 Hier nun den Inhalt aus dem File Anisble Minecraft Playbook einfügen
 
-Schritt 13: 
+Schritt 13: Pfad erstellen für Systemdeamon
+sudo mkdir /ansible/templates
+cd templates/
+
+Schritt 14: Systemdeamon erstellen (File)
+sudo nano minecraft.service.j2
+Hier den Inhalt des Minecraft.service.j2 File einfügen.
+
+Schritt 15: 
 
 
 
