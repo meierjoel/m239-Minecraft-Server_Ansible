@@ -41,9 +41,11 @@ sudo apt update
 sudo apt install ansible
 Mit "y" bestätigen und immer weiter klicken
 
+Schritt 8: 
+
 Schritt 8: Ansible Host File anpassen
 sudo nano /etc/ansible/hosts
-zuunters die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
+zu unters die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
 
 Schritt 9:  Testen funktionirt alles?
 
