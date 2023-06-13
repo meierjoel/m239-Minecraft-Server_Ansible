@@ -41,13 +41,32 @@ sudo apt update
 sudo apt install ansible
 Mit "y" bestätigen und immer weiter klicken
 
-Schritt 8: 
-
 Schritt 8: Ansible Host File anpassen
 sudo nano /etc/ansible/hosts
 zu unters die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
 
-Schritt 9:  Testen funktionirt alles?
+Schritt 9:  Testen, sind die Hosts vorhanden und erreichbar?
+ansible-inventory --list -y 
+Listet alle Host auf, man sollt unter dem server 1 den localhost sehen.
+ansible all -m ping -u root 
+Pingt alle Hosts an. Wenn Grün, dann ist alles ok. Ansonsten muss die SSH verbindung vom Root zum Localhost erneut getestet werden.
+
+Schritt 10: ADHock Commands testen (Disk usage & Install Module Vim)
+ansible all -a "df -h" -u root
+ansible all -m apt -a "name=vim state=latest" -u root
+Sollte beides ohne Probleme funktionieren.
+
+Schritt 11: Pfad für Ansible Playbook erstellen
+sudo mkdir /ansible
+cd /ansible/
+
+Schritt 12: Ansible Minecraft Playbook erstellen
+sudo nano minecraft.yaml
+Hier nun den Inhalt aus dem File Anisble Minecraft Playbook einfügen
+
+Schritt 13: 
+
+
 
 
 
