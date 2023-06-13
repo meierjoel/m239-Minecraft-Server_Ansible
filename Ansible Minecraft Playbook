@@ -1,0 +1,48 @@
+---
+- name: Install Minecraft Server
+  hosts: minecraftservers
+  remote_user: root 
+
+  tasks:
+    - name: Add OpenJDK PPA
+      apt_repository:
+        repo: ppa:openjdk-r/ppa
+      
+    - name: Update package sources
+      apt:
+        update_cache: yes 
+
+    - name: Install OpenJDK 17
+      apt:
+        name: openjdk-17-jre-headless 
+        state: present
+       
+    - name: Allow incoming traffic on port 25565
+      ufw:
+        rule: allow
+        port: 25565 
+    
+    - name: Create Directory
+      file:
+        path: /opt/minecraft_server
+        state: directory 
+
+    - name: Download Minecraft server JAR
+      get_url:
+        url: https://piston-data.mojang.com/v1/objects/8f3112a1049751cc472ec13e397eade5336ca7ae/server.jar
+        dest: /opt/minecraft_server/minecraft_server.jar 
+        mode: 0755 
+
+    - name: Create Minecraft service file
+      template:
+        src: templates/minecraft.service.j2
+        dest: /etc/systemd/system/minecraft.service
+        owner: root
+        group: root
+        mode: 0644
+        
+    - name: Enable and start Minecraft service
+      systemd:
+        name: minecraft
+        state: started
+        enabled: yes
