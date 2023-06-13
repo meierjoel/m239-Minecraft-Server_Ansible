@@ -1,5 +1,5 @@
 # m239-Minecraft-Server_Ansible
-How to Set UP a Minecraft Server (1.19.4) with Ansible under Ubuntu 22.04 with a Systemdeamon on ine server
+How to Set UP a Minecraft Server (1.19.4) with Ansible under Ubuntu 22.04 with a Systemdeamon on localhost
 
 Voraussetzungen: 
 Funktionierendes Netzwerk (Bridged bei VM)
