@@ -20,7 +20,7 @@ ip a
 
 ### Schritt 2: SSH Verbindung auf den Ubuntu server herstellen von Windows Terminal (CMD)
 ```shell
-ssh user@172.20.10.2
+ssh user@ipadresse
 ```
 Mit "yes" bestätigen und pw des users eingeben.
 
