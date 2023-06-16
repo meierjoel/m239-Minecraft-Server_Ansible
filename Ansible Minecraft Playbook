@@ -1,3 +1,4 @@
+```yaml
 ---
 - name: Install Minecraft Server
   hosts: minecraftservers
@@ -38,3 +39,4 @@
         name: minecraft
         state: started
         enabled: yes
+```
