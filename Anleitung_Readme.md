@@ -2,17 +2,17 @@
 How to Set UP a Minecraft Server (1.19.4) with Ansible under Ubuntu 22.04 with a Systemdeamon on localhost
 
 
-## Voraussetzungen:
+## Voraussetzungen
 Funktionierendes Netzwerk (Bridged bei VM)
 Ubuntu Server 2022 (Ubuntu 22.04.2 LTS) bei installation inkl. SSH
 
 
-## Info:
+## Info
 Wenn User erwähnt immer den eigenen User benutzen!
 Falls IP-Adresse vorkommen immer eigene Adresse benutzen!
 
 
-## Anleitung:
+## Anleitung
 ### Schritt 1: IP-Adresse des Servers herausfinden
 ```shell
 ip a
@@ -33,11 +33,11 @@ Bei user eigener User angeben danach noch passswort wegen sudo Befehl.
 ### Schritt 5: SSH-Service Neustarten
 sudo systemctl restart ssh
 
-**Schritt 6:** SSH-Verbindung von Root auf den Localhost
+### Schritt 6: SSH-Verbindung von Root auf den Localhost
 ssh root@localhost
 Sollte funktionieren ansonsten rebooten und erneut versuchen.
 
-**Schritt 7:** Ansible Repository erstellen und installieren
+### Schritt 7: Ansible Repository erstellen und installieren
 ctrl+d klicken
 sudo apt-add-repository ppa:ansible/ansible
 Immer auf Enter klicken
@@ -45,58 +45,58 @@ sudo apt update
 sudo apt install ansible
 Mit "y" bestätigen und immer weiter klicken
 
-**Schritt 8:** Ansible Host File anpassen
+### Schritt 8: Ansible Host File anpassen
 sudo nano /etc/ansible/hosts
 Zu unters die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
 
-**Schritt 9:**  Testen, sind die Hosts vorhanden und erreichbar?
+### Schritt 9:  Testen, sind die Hosts vorhanden und erreichbar?
 ansible-inventory --list -y 
 Listet alle Host auf, man sollt unter dem server 1 den localhost sehen.
 ansible all -m ping -u root 
 Pingt alle Hosts an. Wenn Grün, dann ist alles ok. Ansonsten muss die SSH verbindung vom Root zum Localhost erneut getestet werden.
 
-**Schritt 10:** ADHock Commands testen (Disk usage & Install Module Vim)
+### Schritt 10: ADHock Commands testen (Disk usage & Install Module Vim)
 ansible all -a "df -h" -u root
 ansible all -m apt -a "name=vim state=latest" -u root
 Sollte beides ohne Probleme funktionieren.
 
-**Schritt 11:** Pfad für Ansible Playbook erstellen
+### Schritt 11: Pfad für Ansible Playbook erstellen
 sudo mkdir /ansible
 cd /ansible/
 
-**Schritt 12:** Ansible Minecraft Playbook erstellen
+### Schritt 12: Ansible Minecraft Playbook erstellen
 sudo nano minecraft.yaml
 Hier nun den Inhalt aus dem File Anisble Minecraft Playbook einfügen
 
-**Schritt 13:** Pfad erstellen für Systemdeamon
+### Schritt 13: Pfad erstellen für Systemdeamon
 sudo mkdir /ansible/templates
 cd templates/
 
-**Schritt 14:** Systemdeamon erstellen (File)
+### Schritt 14: Systemdeamon erstellen (File)
 sudo nano minecraft.service.j2
 Hier den Inhalt des Minecraft.service.j2 File einfügen und speichern.
 
-**Schritt 15:** Ansible Playbook einmalig starten
+### Schritt 15: Ansible Playbook einmalig starten
 cd ..
 ansible-playbook minecraft.yaml
 Dies kann einen kurzen moment dauern.
 
-**Schritt 16:** EULA vom Minecraftserver akzeptieren
+### Schritt 16: EULA vom Minecraftserver akzeptieren
 cd /opt/minecraft_server
 sudo nano eula.txt
 Den Wert false durch true ersetzen und speichern.
 
-**Schritt 17:** Optional anpassungen an den Minecraft Rules
+### Schritt 17: Optional anpassungen an den Minecraft Rules
 cd /opt/minecraft_server
 sudo nano server.properties
 
-**Schritt 18:** Ansible Playbook starten
+### Schritt 18: Ansible Playbook starten
 ansible-playbook /ansible/minecraft.yaml
 
-**Schritt 19:** Auf den Server vom Minecraft Launcher verbinden via IP
+### Schritt 19: Auf den Server vom Minecraft Launcher verbinden via IP
 Also im Minecraft Launcher version 1.19.4 --> Multiplayer --> Direct Connection -->server ip (172.20.10.2)
 
-**Fehlerbehebung:**
+## Fehlerbehebung
 Falls der Minecraftserver nicht direkt läuft muss man den status anschauen falls nicht grün neustarten
 systemctl status minecraft.service
 Befehl zum den Service Neustarten
