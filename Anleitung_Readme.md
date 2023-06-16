@@ -32,10 +32,10 @@ ssh-keygen
 Immer auf Enter klicken bis durch.
 
 ### Schritt 4: SSH-Key kopieren und beim Rootuser ablegen.
+Bei username eigener User angeben danach noch passswort wegen sudo Befehl.
 ```shell
 sudo cp /home/username/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 ```
-Bei username eigener User angeben danach noch passswort wegen sudo Befehl.
 
 ### Schritt 5: SSH-Service Neustarten
 ```shell
@@ -64,17 +64,17 @@ Mit "y" bestätigen und immer weiter klicken
 ```shell
 sudo nano /etc/ansible/hosts
 ```
-Zu unters die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
+Zu unterst die Zeilen aus dem hier abgelegten Ansibel Host File einfügen und speichern.
 
 ### Schritt 9:  Testen, sind die Hosts vorhanden und erreichbar?
+Listet alle Host auf, man sollt unter dem server 1 den localhost sehen.
 ```shell
 ansible-inventory --list -y 
 ```
-Listet alle Host auf, man sollt unter dem server 1 den localhost sehen.
+Pingt alle Hosts an. Wenn Grün, dann ist alles ok. Ansonsten muss die SSH verbindung vom Root zum Localhost erneut getestet werden.
 ```shell
 ansible all -m ping -u root 
 ```
-Pingt alle Hosts an. Wenn Grün, dann ist alles ok. Ansonsten muss die SSH verbindung vom Root zum Localhost erneut getestet werden.
 
 ### Schritt 10: ADHock Commands testen (Disk usage & Install Module Vim)
 ```shell
@@ -93,7 +93,7 @@ cd /ansible/
 ```shell
 sudo nano minecraft.yaml
 ```
-Hier nun den Inhalt aus dem File Anisble Minecraft Playbook einfügen
+Hier nun den Inhalt aus dem File Anisble Minecraft Playbook einfügen.
 
 ### Schritt 13: Pfad erstellen für Systemdeamon
 ```shell
@@ -112,7 +112,7 @@ Hier den Inhalt des Minecraft.service.j2 File einfügen und speichern.
 cd ..
 ansible-playbook minecraft.yaml
 ```
-Dies kann einen kurzen moment dauern.
+Dies kann einen kurzen Moment dauern.
 
 ### Schritt 16: EULA vom Minecraftserver akzeptieren
 ```shell
