@@ -114,23 +114,31 @@ ansible-playbook minecraft.yaml
 Dies kann einen kurzen moment dauern.
 
 ### Schritt 16: EULA vom Minecraftserver akzeptieren
+```shell
 cd /opt/minecraft_server
 sudo nano eula.txt
+```
 Den Wert false durch true ersetzen und speichern.
 
 ### Schritt 17: Optional anpassungen an den Minecraft Rules
+```shell
 cd /opt/minecraft_server
 sudo nano server.properties
-
+```
 ### Schritt 18: Ansible Playbook starten
+```shell
 ansible-playbook /ansible/minecraft.yaml
+```
 
 ### Schritt 19: Auf den Server vom Minecraft Launcher verbinden via IP
 Also im Minecraft Launcher version 1.19.4 --> Multiplayer --> Direct Connection -->server ip (172.20.10.2)
 
 ## Fehlerbehebung
 Falls der Minecraftserver nicht direkt läuft muss man den status anschauen falls nicht grün neustarten
+```shell
 systemctl status minecraft.service
+```
 Befehl zum den Service Neustarten
+```shell
 systemctl restart minecraft.service 
-
+```
