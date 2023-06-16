@@ -19,8 +19,9 @@ ip a
 ```
 
 ### Schritt 2: SSH Verbindung auf den Ubuntu server herstellen von Windows Terminal (CMD)
+Bei username eigener User und bei ipaddress die IP des Ubuntu Servers angeben.
 ```shell
-ssh user@ipadresse
+ssh username@ipaddress
 ```
 Mit "yes" bestätigen und pw des users eingeben.
 
@@ -32,9 +33,9 @@ Immer auf Enter klicken bis durch.
 
 ### Schritt 4: SSH-Key kopieren und beim Rootuser ablegen.
 ```shell
-sudo cp /home/user/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+sudo cp /home/username/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 ```
-Bei user eigener User angeben danach noch passswort wegen sudo Befehl.
+Bei username eigener User angeben danach noch passswort wegen sudo Befehl.
 
 ### Schritt 5: SSH-Service Neustarten
 ```shell
