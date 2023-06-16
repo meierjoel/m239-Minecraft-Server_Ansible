@@ -150,3 +150,11 @@ systemctl restart minecraft.service
 - ```
 + ```shell
 + \[\033[33m\]ssh username@ipaddress\[\033[0m\]
+
+
+
+```diff
+- ```diff
+  - \033[33mssh username@ipaddress\033[0m
+  - ```
+
