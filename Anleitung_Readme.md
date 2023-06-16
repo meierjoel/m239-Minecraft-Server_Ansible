@@ -143,18 +143,3 @@ Befehl zum den Service Neustarten
 ```shell
 systemctl restart minecraft.service 
 ```
-
-
-- ```shell
-- ssh username@ipaddress
-- ```
-+ ```shell
-+ \[\033[33m\]ssh username@ipaddress\[\033[0m\]
-
-
-
-```diff
-- ```diff
-  - \033[33mssh username@ipaddress\033[0m
-  - ```
-
